@@ -18,6 +18,8 @@ class LessonsController < ApplicationController
     @student = Student.find(params[:student_id])
   end
 
+  protected
+
   # Override VestalVersions `user_for_vestal_versions`
   def user_for_vestal_versions
     @student

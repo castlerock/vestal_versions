@@ -12,7 +12,7 @@ module VestalVersions
       ::VestalVersions.vestal_versions_store[:request_url] = request.url
     end
 
-    private
+    protected
 
     # Override this method in your controller
     # to get current_user.
