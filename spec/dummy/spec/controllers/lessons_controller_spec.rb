@@ -14,7 +14,7 @@ RSpec.describe LessonsController, :type => :controller do
       # Settings should be blank initially.
       expect(VestalVersions.vestal_versions_store).to eq({})
 
-      put :update, student_id: @student.id, id: @lesson.id
+      put :update, student_id: @student.id, id: @lesson.id, api_token: 'abcdefgh'*300
 
       @lesson.reload
 
@@ -24,6 +24,8 @@ RSpec.describe LessonsController, :type => :controller do
       expect(version.ip_address).to  eq(VestalVersions.vestal_versions_store[:ip_address])
       expect(version.user_agent).to  eq(VestalVersions.vestal_versions_store[:user_agent])
       expect(version.request_url).to eq(VestalVersions.vestal_versions_store[:request_url])
+
+      expect(version.request_url.length).to eq(254)
     end
 
   end

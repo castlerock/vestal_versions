@@ -8,8 +8,8 @@ module VestalVersions
       # Set VestalVersion's request info.
       ::VestalVersions.vestal_versions_store[:user]        = user_for_vestal_versions
       ::VestalVersions.vestal_versions_store[:ip_address]  = request.remote_ip
-      ::VestalVersions.vestal_versions_store[:user_agent]  = request.user_agent
-      ::VestalVersions.vestal_versions_store[:request_url] = request.url
+      ::VestalVersions.vestal_versions_store[:user_agent]  = request.user_agent.truncate(MAX_STRING_LIMIT)
+      ::VestalVersions.vestal_versions_store[:request_url] = request.url.truncate(MAX_STRING_LIMIT)
     end
 
     protected
@@ -18,6 +18,7 @@ module VestalVersions
     # to get current_user.
     def user_for_vestal_versions; end
 
+    MAX_STRING_LIMIT = 254
   end
 
   # Include Controller module to ActionController if it is defined.
