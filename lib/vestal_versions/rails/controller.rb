@@ -8,8 +8,8 @@ module VestalVersions
       # Set VestalVersion's request info.
       ::VestalVersions.vestal_versions_store[:user]        = user_for_vestal_versions
       ::VestalVersions.vestal_versions_store[:ip_address]  = request.remote_ip
-      ::VestalVersions.vestal_versions_store[:user_agent]  = request.user_agent.truncate(MAX_STRING_LIMIT)
-      ::VestalVersions.vestal_versions_store[:request_url] = request.url.truncate(MAX_STRING_LIMIT)
+      ::VestalVersions.vestal_versions_store[:user_agent]  = request.user_agent.to_s.truncate(MAX_STRING_LIMIT)
+      ::VestalVersions.vestal_versions_store[:request_url] = request.url.to_s.truncate(MAX_STRING_LIMIT)
     end
 
     protected
